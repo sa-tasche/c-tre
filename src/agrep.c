@@ -23,9 +23,7 @@
 #ifdef HAVE_GETOPT_H
 #include <getopt.h>
 #endif /* HAVE_GETOPT_H */
-/* Make certain we get the legacy TRE specific regex.h and not any
-   potential system regex.h by giving an explict path to the header. */
-#include "../local_includes/regex.h"
+#include <tre/regex.h>
 
 #ifdef HAVE_GETTEXT
 #include <libintl.h>

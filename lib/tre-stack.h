@@ -9,8 +9,6 @@
 #ifndef TRE_STACK_H
 #define TRE_STACK_H
 
-#include "../local_includes/tre.h"
-
 typedef struct tre_stack_rec tre_stack_t;
 
 /* Creates a new stack object with initial size `size' and maximum size

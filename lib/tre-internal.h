@@ -8,6 +8,10 @@
 #ifndef TRE_INTERNAL_H
 #define TRE_INTERNAL_H
 
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif /* HAVE_SYS_TYPES_H */
+
 #ifdef HAVE_WCHAR_H
 #include <wchar.h>
 #endif /* HAVE_WCHAR_H */
@@ -16,13 +20,10 @@
 #include <wctype.h>
 #endif /* HAVE_WCTYPE_H */
 
-#ifdef HAVE_SYS_TYPES_H
-#include <sys/types.h>
-#endif /* HAVE_SYS_TYPES_H */
-
 #include <limits.h>
 #include <ctype.h>
-#include "../local_includes/tre.h"
+
+#include "tre/tre.h"
 
 #define TRE_MAX_RE	65536
 #define TRE_MAX_STRING	INT_MAX

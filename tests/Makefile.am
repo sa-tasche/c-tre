@@ -1,6 +1,8 @@
 ## Process this file with automake to produce Makefile.in
 AUTOMAKE_OPTIONS = subdir-objects
 
+AM_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_srcdir)/include
+
 SUBDIRS = agrep
 
 check_PROGRAMS = retest randtest test-str-source
@@ -59,8 +61,6 @@ endif TRE_MULTIBYTE
   randtest_CFLAGS = -DMALLOC_DEBUGGING
   randtest_LDADD = libxtre.la $(LDADD)
 endif !TRE_DEBUG
-
-AM_CPPFLAGS = -I$(top_srcdir)/lib
 
 EXTRA_DIST = build-tests.sh
 

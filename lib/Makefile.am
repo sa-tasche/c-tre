@@ -2,7 +2,7 @@
 lib_LTLIBRARIES = libtre.la
 libtre_la_LDFLAGS = -no-undefined -version-info 5:0:0 $(LDFLAGS)
 libtre_la_LIBADD = $(LTLIBINTL)
-AM_CPPFLAGS = -I$(top_srcdir)/include/tre
+AM_CPPFLAGS = -I$(top_srcdir)/include
 
 noinst_HEADERS =		\
 	tre-ast.h		\

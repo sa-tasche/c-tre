@@ -100,10 +100,6 @@ else
   AM_CONDITIONAL(TRE_AGREP, false)
 fi
 
-
-dnl Make sure locally configured headers are used (this adds the #define to config.h).
-AC_DEFINE(USE_LOCAL_TRE_H, 1, [ Define to ensure locally configured headers are used ])
-
 AC_ARG_WITH(alloca,
   AS_HELP_STRING(
     [--without-alloca],
@@ -520,12 +516,13 @@ AM_GNU_GETTEXT([external])
 LT_INIT([win32-dll, disable-static])
 
 dnl Output files
-AC_CONFIG_HEADERS([config.h local_includes/tre-config.h])
+AC_CONFIG_HEADERS([config.h include/tre/tre-config.h])
 AC_CONFIG_FILES([
 Makefile
 doc/Makefile
 doc/agrep.1
-local_includes/Makefile
+include/Makefile
+include/tre/Makefile
 lib/Makefile
 m4/Makefile
 po/Makefile.in

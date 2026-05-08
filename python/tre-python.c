@@ -26,16 +26,7 @@
 #include "Python.h"
 #include "structmember.h"
 
-#ifdef USE_LOCAL_TRE_H
-/* Make certain to use the header(s) from the TRE package that this
-   file is part of by giving the full path to the header from this directory. */
-#include "../local_includes/tre.h"
-#else
-/* Use the header(s) from an installed version of the TRE package
-   (so that this extension matches the installed libtre),
-   not the one(s) in the local_includes directory. */
 #include <tre/tre.h>
-#endif
 
 /* Define this if you want to release the GIL during compilation or searching.
    This builds and runs, but has not been tested with a multi-threaded test case.
