@@ -1,11 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT([TRE], [0.9.0])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([lib/regcomp.c])
 AC_CONFIG_AUX_DIR([utils])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([foreign])
-AC_PREREQ([2.63])
-AM_GNU_GETTEXT_VERSION(0.17)
+AC_PREREQ([2.69])
+AM_GNU_GETTEXT_VERSION(0.19)
 
 dnl Checks for programs.
 AC_PROG_CC
