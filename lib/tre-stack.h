@@ -1,14 +1,13 @@
 /*
-  tre-stack.h: Stack definitions
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
-
+ * tre-stack.h: Stack definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ *
+ */
 
 #ifndef TRE_STACK_H
-#define TRE_STACK_H 1
+#define TRE_STACK_H
 
 #include "../local_includes/tre.h"
 

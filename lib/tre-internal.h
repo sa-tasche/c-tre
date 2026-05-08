@@ -1,13 +1,12 @@
 /*
-  tre-internal.h - TRE internal definitions
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
+ * tre-internal.h - TRE internal definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ */
 
 #ifndef TRE_INTERNAL_H
-#define TRE_INTERNAL_H 1
+#define TRE_INTERNAL_H
 
 #ifdef HAVE_WCHAR_H
 #include <wchar.h>

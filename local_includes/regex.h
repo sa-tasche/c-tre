@@ -1,17 +1,16 @@
 /*
-  regex.h - TRE legacy API
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-  This header is for source level compatibility with old code using
-  the <tre/regex.h> header which defined the TRE API functions without
-  a prefix.  New code should include <tre/tre.h> instead.
-
-*/
+ * regex.h - TRE legacy API
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ *
+ * This header is for source level compatibility with old code using
+ * the <tre/regex.h> header which defined the TRE API functions without
+ * a prefix.  New code should include <tre/tre.h> instead.
+ */
 
 #ifndef TRE_REGEX_H
-#define TRE_REGEX_H 1
+#define TRE_REGEX_H
 
 #ifdef USE_LOCAL_TRE_H
 /* Use the header(s) from the TRE package that this file is part of.

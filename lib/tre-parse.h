@@ -1,13 +1,12 @@
 /*
-  tre-parse.c - Regexp parser definitions
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
+ * tre-parse.c - Regexp parser definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ */
 
 #ifndef TRE_PARSE_H
-#define TRE_PARSE_H 1
+#define TRE_PARSE_H
 
 /* Parse context. */
 typedef struct {
