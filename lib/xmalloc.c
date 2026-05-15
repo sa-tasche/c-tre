@@ -50,9 +50,7 @@ static unsigned int xmalloc_ndel;
 static unsigned int xmalloc_ncoll;
 static int xmalloc_fail_after;
 
-#define TABLE_BITS 8
-#define TABLE_MASK ((1 << TABLE_BITS) - 1)
-#define TABLE_SIZE (1 << TABLE_BITS)
+#define TABLE_SIZE 8191
 
 static hashTable *
 hash_table_new(void)
@@ -75,22 +73,24 @@ hash_table_new(void)
   return tbl;
 }
 
+static uint32_t
+adler32(const void *data, size_t len)
+{
+  const uint8_t *bytes;
+  uint32_t c0, c1;
+
+  for (bytes = data, c0 = 1, c1 = 0; len > 0; len--, bytes++)
+    {
+      c0 = (c0 + *bytes) % 65521;
+      c1 = (c1 + c0) % 65521;
+    }
+  return c1 << 16 | c0;
+}
+
 static unsigned int
 hash_addr(uintptr_t addr)
 {
-  unsigned int hash;
-  unsigned int i;
-
-  /* I took this hash function just off the top of my head, I have
-     no idea whether it is bad or very bad. */
-  hash = 0;
-  for (i = 0; i < sizeof(addr) * 8 / TABLE_BITS; i++)
-    {
-      hash ^= addr >> i * 8;
-      hash += i * 17;
-      hash &= TABLE_MASK;
-    }
-  return hash;
+  return adler32(&addr, sizeof(addr)) % TABLE_SIZE;
 }
 
 static void
