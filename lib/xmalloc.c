@@ -45,6 +45,9 @@ static unsigned int xmalloc_peak;
 static unsigned int xmalloc_current;
 static unsigned int xmalloc_peak_blocks;
 static unsigned int xmalloc_current_blocks;
+static unsigned int xmalloc_nins;
+static unsigned int xmalloc_ndel;
+static unsigned int xmalloc_ncoll;
 static int xmalloc_fail_after;
 
 #define TABLE_BITS 8
@@ -113,9 +116,16 @@ hash_table_add(hashTable *tbl, uintptr_t addr, size_t size,
   new->func = func;
   new->next = NULL;
   if (item != NULL)
-    item->next = new;
+    {
+      item->next = new;
+      xmalloc_nins++;
+      xmalloc_ncoll++;
+    }
   else
-    tbl->table[i] = new;
+    {
+      tbl->table[i] = new;
+      xmalloc_nins++;
+    }
 
   xmalloc_current += size;
   if (xmalloc_current > xmalloc_peak)
@@ -156,6 +166,7 @@ hash_table_del(hashTable *tbl, uintptr_t addr)
       tbl->table[i] = item->next;
       free(item);
     }
+  xmalloc_ndel++;
 }
 
 static hashTable *xmalloc_table = NULL;
@@ -170,6 +181,9 @@ xmalloc_init(void)
       xmalloc_peak_blocks = 0;
       xmalloc_current = 0;
       xmalloc_current_blocks = 0;
+      xmalloc_nins = 0;
+      xmalloc_ndel = 0;
+      xmalloc_ncoll = 0;
       xmalloc_fail_after = -1;
     }
   assert(xmalloc_table != NULL);
@@ -226,6 +240,12 @@ xmalloc_dump_leaks(void)
   else
     printf("N/A");
   printf(" bytes per block).\n");
+
+  printf("Hash table: %u inserts %u deletes %u collisions",
+	 xmalloc_nins, xmalloc_ndel, xmalloc_ncoll);
+  if (xmalloc_ncoll > 0)
+    printf(" (%.2f%%)", 100.0 * xmalloc_ncoll / xmalloc_nins);
+  printf("\n");
 
   return num_leaks;
 }
