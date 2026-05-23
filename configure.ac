@@ -1,11 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT([TRE], [0.9.0])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([lib/regcomp.c])
 AC_CONFIG_AUX_DIR([utils])
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([foreign])
-AC_PREREQ([2.63])
-AM_GNU_GETTEXT_VERSION(0.17)
+AC_PREREQ([2.69])
+AM_GNU_GETTEXT_VERSION(0.19)
 
 dnl Checks for programs.
 AC_PROG_CC
@@ -99,10 +100,6 @@ if test "$tre_agrep" = "yes"; then
 else
   AM_CONDITIONAL(TRE_AGREP, false)
 fi
-
-
-dnl Make sure locally configured headers are used (this adds the #define to config.h).
-AC_DEFINE(USE_LOCAL_TRE_H, 1, [ Define to ensure locally configured headers are used ])
 
 AC_ARG_WITH(alloca,
   AS_HELP_STRING(
@@ -520,12 +517,13 @@ AM_GNU_GETTEXT([external])
 LT_INIT([win32-dll, disable-static])
 
 dnl Output files
-AC_CONFIG_HEADERS([config.h local_includes/tre-config.h])
+AC_CONFIG_HEADERS([config.h include/tre/tre-config.h])
 AC_CONFIG_FILES([
 Makefile
 doc/Makefile
 doc/agrep.1
-local_includes/Makefile
+include/Makefile
+include/tre/Makefile
 lib/Makefile
 m4/Makefile
 po/Makefile.in

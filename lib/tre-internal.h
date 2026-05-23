@@ -1,13 +1,16 @@
 /*
-  tre-internal.h - TRE internal definitions
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
+ * tre-internal.h - TRE internal definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ */
 
 #ifndef TRE_INTERNAL_H
-#define TRE_INTERNAL_H 1
+#define TRE_INTERNAL_H
+
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif /* HAVE_SYS_TYPES_H */
 
 #ifdef HAVE_WCHAR_H
 #include <wchar.h>
@@ -17,13 +20,10 @@
 #include <wctype.h>
 #endif /* HAVE_WCTYPE_H */
 
-#ifdef HAVE_SYS_TYPES_H
-#include <sys/types.h>
-#endif /* HAVE_SYS_TYPES_H */
-
 #include <limits.h>
 #include <ctype.h>
-#include "../local_includes/tre.h"
+
+#include "tre/tre.h"
 
 #define TRE_MAX_RE	65536
 #define TRE_MAX_STRING	INT_MAX
@@ -271,11 +271,6 @@ tre_free(regex_t *preg);
 void
 tre_fill_pmatch(size_t nmatch, regmatch_t pmatch[], int cflags,
 		const tre_tnfa_t *tnfa, int *tags, int match_eo);
-
-reg_errcode_t
-tre_tnfa_run_parallel(const tre_tnfa_t *tnfa, const void *string, ssize_t len,
-		      tre_str_type_t type, int *match_tags, int eflags,
-		      int *match_end_ofs);
 
 reg_errcode_t
 tre_tnfa_run_parallel(const tre_tnfa_t *tnfa, const void *string, ssize_t len,

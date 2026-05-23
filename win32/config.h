@@ -181,7 +181,11 @@
 /* #undef size_t */
 
 /* Define as 'int' if <sys/types.h> doesn't define. */
-#define ssize_t long
+#ifdef _WIN64
+#define ssize_t __int64
+#else
+#define ssize_t __int32
+#endif
 
 /* Avoid silly warnings about "insecure" functions. */
 #define _CRT_SECURE_NO_DEPRECATE 1

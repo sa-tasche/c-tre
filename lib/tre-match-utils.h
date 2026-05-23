@@ -1,10 +1,12 @@
 /*
-  tre-match-utils.h - TRE matcher helper definitions
+ * tre-match-utils.h - TRE matcher helper definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ */
 
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
+#ifndef TRE_MATCH_UTILS_H
+#define TRE_MATCH_UTILS_H
 
 #define str_source ((const tre_str_source*)string)
 
@@ -213,3 +215,7 @@ tre_neg_char_classes_match(tre_ctype_t *classes, tre_cint_t wc, int icase)
       classes++;
   return 0; /* No match. */
 }
+
+#endif /* TRE_MATCH_UTILS_H */
+
+/* EOF */

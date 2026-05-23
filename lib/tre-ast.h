@@ -1,14 +1,12 @@
 /*
-  tre-ast.h - Abstract syntax tree (AST) definitions
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
-
+ * tre-ast.h - Abstract syntax tree (AST) definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ */
 
 #ifndef TRE_AST_H
-#define TRE_AST_H 1
+#define TRE_AST_H
 
 #include "tre-mem.h"
 #include "tre-internal.h"

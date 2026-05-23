@@ -1,22 +1,14 @@
 /*
-  tre.h - TRE public API definitions
-
-  This software is released under a BSD-style license.
-  See the file LICENSE for details and copyright.
-
-*/
+ * tre.h - TRE public API definitions
+ *
+ * This software is released under a BSD-style license.
+ * See the file LICENSE for details and copyright.
+ */
 
 #ifndef TRE_H
-#define TRE_H 1
+#define TRE_H
 
-#ifdef USE_LOCAL_TRE_H
-/* Make certain to use the header(s) from the TRE package that this
-   file is part of by giving the full path to the header from this directory. */
-#include "../local_includes/tre-config.h"
-#else
-/* Use the header in the same directory as this file if there is one. */
 #include "tre-config.h"
-#endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -339,6 +331,7 @@ tre_have_approx(const regex_t *preg);
 #ifdef __cplusplus
 }
 #endif
-#endif				/* TRE_H */
+
+#endif /* TRE_H */
 
 /* EOF */
